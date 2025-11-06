@@ -490,7 +490,7 @@ def app_gui():
             # 可选：设置服务器配置
             server_name='0.0.0.0',  # 允许外部访问（可选）
             server_port=7860,       # 端口号
-            share=False             # 是否创建公网链接
+            share=True              # 创建公网链接（用于演示和分享）
         )
         
         # 注入自定义CSS样式（如果WebUI支持）
