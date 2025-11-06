@@ -1,0 +1,32 @@
+Q1：对比2000年股票A和股票B的涨跌幅
+A1：
+我需要先找到股票A在2000年第一天和最后一天的价格，再找到股票B在2000年第一天和最后一天的价格，
+然后计算股票A的涨跌幅 = (最后一天价格 - 第一天价格) / 第一天价格 * 100%
+同样计算股票B的涨跌幅 = (最后一天价格 - 第一天价格) / 第一天价格 * 100%
+然后对比这两只股票的涨跌幅。
+
+查询股票撰写SQL的时候，需要按照 trade_date 升序排序，这样可以看到不同股票在同一天的价格对比。
+trade_date的格式类似：2024-01-01
+
+==
+Q2: 预测XXX股票未来X天的价格
+A2：
+我需要使用arima_stock进行预测，然后回复用户，这里要对股票的未来价格进行解释，比如后续价格是怎样的。
+
+==
+Q3: 如何查询股票历史价格
+A3：
+使用exc_sql工具，编写SQL查询语句从stock_price表中查询指定股票的历史价格数据。
+例如：SELECT trade_date, close FROM stock_price WHERE ts_code = '600519.SH' AND trade_date >= '2024-01-01' ORDER BY trade_date ASC
+
+==
+Q4: 如何对比多支股票
+A4：
+使用exc_sql工具，编写SQL查询语句同时查询多支股票的数据，可以对比它们的收盘价、涨跌幅等指标。
+例如：SELECT trade_date, ts_code, close FROM stock_price WHERE ts_code IN ('600519.SH', '000858.SZ') AND trade_date >= '2024-01-01' ORDER BY trade_date ASC, ts_code ASC
+
+==
+Q5: 如何搜索股票热点新闻
+A5：
+使用tavily-mcp工具搜索股票相关的热点新闻。可以直接询问"XXX股票最近的热点新闻"。
+
